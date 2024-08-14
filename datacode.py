@@ -73,3 +73,14 @@ try:
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", "folium"]) 
     import folium
+
+map_osm = folium.Map(location=[41.878, -87.629], zoom_start=11)
+for library in libraries:
+    lt = library.y
+    lg = library.x
+    folium.Marker([lt, lg]).add_to(map_osm)
+map_osm
+
+map_osm.save('chicago_libraries_map.html')
+
+
